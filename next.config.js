@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+  env: {
+    title: 'LiveIn',
+    description: '',
+  },
   webpackDevMiddleware: config => {
     config.watchOptions = {
       poll: 1000,
