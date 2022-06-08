@@ -9,6 +9,7 @@ module.exports = {
                 primary: "#3A8BB9",
             },
         },
+        
     },
     plugins: [],
 }
