@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Checkbox from "../../form/checkbox";
-import { FilterProps, OptionProps } from "../../../interfaces/IFilter";
+import Checkbox from "../form/checkbox";
+import { FilterProps, OptionProps } from "../../interfaces/IFilter";
 
 const data = require('./region_children.json');
 
@@ -29,7 +29,7 @@ const Region = ({ values, setValues }: FilterProps) => {
                 name="key"
                 value={city}
                 onChange={handleChangeCity}
-                className="block px-3 py-2 mt-1 font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                className="block px-3 py-2 mt-1 font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
             >
                 <option disabled value="">請選擇地區</option>
                 <CityItems />
@@ -60,7 +60,7 @@ const CityItems = () => {
     );
 };
 
-interface RegionItemProps extends FilterProps{
+interface RegionItemProps extends FilterProps {
     regions: OptionProps[],
 };
 

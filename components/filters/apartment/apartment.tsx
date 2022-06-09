@@ -8,7 +8,7 @@ import MultiPrice from "./multi-price";
 import MultiRoom from "./multi-room";
 import Option from "./option";
 import Other from "./other";
-import Region from "./region";
+import Region from "../region";
 import RentKind from "./rentKind";
 import Shape from "./shape";
 
@@ -44,7 +44,7 @@ const ApartmentFilter = () => {
 
     return (
         <div className="p-6 space-y-5 bg-white rounded-sm">
-            <Location location={location} setLocation={setLocation} />
+            <Location label="目前工作地址" location={location} setLocation={setLocation} />
             <div className="flex justify-end space-x-3">
                 <PrimaryButton label="清除篩選" handleClick={clear} />
                 <PrimaryButton label="搜尋" handleClick={search} />

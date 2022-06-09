@@ -1,13 +1,13 @@
-interface LocationProps {
+interface SearchProps {
     label: string,
-    location: string,
-    setLocation: React.Dispatch<React.SetStateAction<string>>
+    value: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Location = ({ label, location, setLocation }: LocationProps) => {
+const Search = ({ label, value, setValue }: SearchProps) => {
 
     const handleChangeLocation = (value: string) => {
-        setLocation(value);
+        setValue(value);
     }
 
     return (
@@ -19,15 +19,15 @@ const Location = ({ label, location, setLocation }: LocationProps) => {
                 {label}
             </label>
             <input
-                value={location}
+                value={value}
                 onChange={e => handleChangeLocation(e.target.value)}
                 type="text"
-                name="location"
-                id="location"
+                name="search"
+                id="search"
                 className="block w-full px-3 py-2 mt-1 font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
             />
         </div>
     );
 };
 
-export default Location;
+export default Search;

@@ -37,9 +37,9 @@ const Checkbox = ({ label, value, name, values, setValues }: CheckboxProps) => {
                 checked={checked}
                 onChange={handleChangeValue}
                 type="checkbox"
-                className="w-5 h-5 ml-1 border-0 rounded accent-primary"
+                className="w-5 h-5 ml-1 border-0 rounded accent-primary focus:outline-none"
             />
-            <span className="ml-2 text-sm font-semibold text-gray-600 transition-all group-hover:text-primary ">
+            <span className="ml-2 text-sm font-semibold text-gray-600 transition-all group-hover:text-primary">
                 {label}
             </span>
         </label>
