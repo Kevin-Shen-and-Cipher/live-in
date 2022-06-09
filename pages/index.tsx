@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ApartmentFilter from '../components/filters/apartment/apartment';
 import JobFilter from '../components/filters/job/job';
 import List from '../components/cards/list';
-import Navigation from '../components/fronted/navigation';
+import Navigation from '../components/frontend/navigation';
 
 const Home: NextPage = () => {
     const [page, setPage] = useState("department");
