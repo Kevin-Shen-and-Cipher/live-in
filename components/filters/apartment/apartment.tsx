@@ -11,8 +11,9 @@ import Other from "./other";
 import Region from "../region";
 import RentKind from "./rentKind";
 import Shape from "./shape";
+import { CardProps } from "../../../interfaces/ICard";
 
-const ApartmentFilter = () => {
+const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>> }) => {
     const [location, setLocation] = useState<string>("");
     const [multiArea, setMultiArea] = useState<string[]>([]);
     const [multiFloor, setMultiFloor] = useState<string[]>([]);
@@ -25,11 +26,35 @@ const ApartmentFilter = () => {
     const [rentKind, setRentKind] = useState<string[]>([]);
     const [shape, setShape] = useState<string[]>([]);
 
-    const search = () => {
-        //api
+    const search = (): void => {
+        if (location !== "" && region.length !== 0) {
+            fetch("http://125.228.170.229:5000/house", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "area": region,
+                    "address": location,
+                    "multi-area": multiArea,
+                    "multi-floor": multiFloor,
+                    "multi-notice": multiNotice,
+                    "multi-price": multiPrice,
+                    "multi-room": multiRoom,
+                    "option": option,
+                    "other": other,
+                    "rentKind": rentKind,
+                    "shape": shape,
+                }),
+            }).then((res) => {
+                return res.json();
+            }).then((res) => {
+                setCards(res);
+            })
+        }
     };
 
-    const clear = () => {
+    const clear = (): void => {
         setMultiArea([]);
         setMultiFloor([]);
         setMultiNotice([]);

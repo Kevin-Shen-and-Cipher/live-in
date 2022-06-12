@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CardProps } from "../../../interfaces/ICard";
 import PrimaryButton from "../../primary-button";
 import Location from "../location";
 import Region from "../region";
@@ -7,18 +8,38 @@ import Salary from "./salary";
 import Search from "./search";
 import WorkingHour from "./working-hour";
 
-const JobFilter = () => {
+const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>> }) => {
     const [location, setLocation] = useState<string>("");
     const [job, setJob] = useState<string>("");
     const [region, setRegion] = useState<string[]>([]);
     const [salary, setSalary] = useState<string[]>([]);
     const [tenure, setTenure] = useState<string[]>([]);
     const [workingHour, setWorkingHour] = useState<string[]>([]);
-    const search = () => {
-        //api
+
+    const search = (): void => {
+        if (location !== "" && region.length !== 0) {
+            fetch("http://125.228.170.229:5000/job", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "area": region,
+                    "address": location,
+                    "job": job,
+                    "salary": salary,
+                    "job-tenure": tenure,
+                    "working-hour": workingHour
+                }),
+            }).then((res) => {
+                return res.json();
+            }).then((res) => {
+                setCards(res);
+            })
+        }
     };
 
-    const clear = () => {
+    const clear = (): void => {
         setRegion([]);
         setSalary([]);
         setTenure([]);
