@@ -3,27 +3,27 @@ import Checkbox from "../../form/checkbox";
 
 const prices: OptionProps[] = [
     {
-        label: "0_5000",
+        label: "0~5000",
         value: "5000"
     },
     {
-        label: "5000_10000",
+        label: "5000~10000",
         value: "10000"
     },
     {
-        label: "10000_20000",
+        label: "10000~20000",
         value: "20000"
     },
     {
-        label: "20000_30000",
+        label: "20000~30000",
         value: "30000"
     },
     {
-        label: "30000_40000",
+        label: "30000~40000",
         value: "40000"
     },
     {
-        label: "40000_",
+        label: "40000以上",
         value: "1000000"
     },
 ];

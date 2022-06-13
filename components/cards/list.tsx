@@ -10,15 +10,15 @@ const List = ({ cards }: { cards: CardProps[] }) => {
     });
 
     return (
-        <div className="">
+        <>
             {listItems.length ? listItems : <WithoutCards />}
-        </div>
+        </>
     );
 };
 
 const WithoutCards = () => {
     return (
-        <div className="flex justify-center">
+        <div className="flex items-center justify-center h-full">
             <p className="text-2xl font-semibold text-gray-600">
                 請搜尋!
             </p>

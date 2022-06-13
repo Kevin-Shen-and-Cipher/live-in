@@ -9,3 +9,38 @@ body {
     padding: 0;
     margin: 0;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}
+
+::-webkit-scrollbar-thumb:hover:horizontal {
+    background: #6B7280;
+}

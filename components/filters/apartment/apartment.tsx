@@ -13,7 +13,7 @@ import RentKind from "./rentKind";
 import Shape from "./shape";
 import { CardProps } from "../../../interfaces/ICard";
 
-const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>> }) => {
+const ApartmentFilter = ({ setCards, setIsReady }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>>, setIsReady: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [location, setLocation] = useState<string>("");
     const [multiArea, setMultiArea] = useState<string[]>([]);
     const [multiFloor, setMultiFloor] = useState<string[]>([]);
@@ -28,6 +28,7 @@ const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetState
 
     const search = (): void => {
         if (location !== "" && region.length !== 0) {
+            setIsReady(false);
             fetch(process.env.NEXT_PUBLIC_APARTMENT_API_URL as string, {
                 method: 'POST',
                 headers: {
@@ -50,6 +51,7 @@ const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetState
                 return res.json();
             }).then((res) => {
                 setCards(res);
+                setIsReady(true);
             })
         }
     };
@@ -68,7 +70,7 @@ const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetState
     };
 
     return (
-        <div className="p-6 space-y-5 bg-white rounded-sm">
+        <div className="p-6 space-y-5 overflow-y-auto bg-white rounded-sm max-h-64 md:max-h-screen">
             <Location label="目前工作地址" location={location} setLocation={setLocation} />
             <div className="flex justify-end space-x-3">
                 <PrimaryButton label="清除篩選" handleClick={clear} />

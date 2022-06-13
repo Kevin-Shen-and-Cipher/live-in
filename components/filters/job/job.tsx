@@ -8,7 +8,7 @@ import Salary from "./salary";
 import JobSearch from "./job-search";
 import WorkingHour from "./working-hour";
 
-const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>> }) => {
+const JobFilter = ({ setCards, setIsReady }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>>, setIsReady: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [location, setLocation] = useState<string>("");
     const [job, setJob] = useState<string>("");
     const [region, setRegion] = useState<string[]>([]);
@@ -18,6 +18,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
 
     const search = (): void => {
         if (location !== "" && region.length !== 0) {
+            setIsReady(false);
             fetch(process.env.NEXT_PUBLIC_JOB_API_URL as string, {
                 method: 'POST',
                 headers: {
@@ -35,6 +36,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
                 return res.json();
             }).then((res) => {
                 setCards(res);
+                setIsReady(true);
             })
         }
     };
@@ -47,7 +49,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
     };
 
     return (
-        <div className="p-6 space-y-5 bg-white rounded-sm">
+        <div className="p-6 space-y-5 overflow-y-auto bg-white rounded-sm max-h-64 md:max-h-screen">
             <Location label="目前居住地址" location={location} setLocation={setLocation} />
             <div className="flex justify-end space-x-3">
                 <PrimaryButton label="清除篩選" handleClick={clear} />
