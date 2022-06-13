@@ -18,7 +18,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
 
     const search = (): void => {
         if (location !== "" && region.length !== 0) {
-            fetch("http://125.228.170.229:5000/job", {
+            fetch(process.env.NEXT_PUBLIC_JOB_API_URL as string, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

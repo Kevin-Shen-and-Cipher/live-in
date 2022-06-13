@@ -28,7 +28,7 @@ const ApartmentFilter = ({ setCards }: { setCards: React.Dispatch<React.SetState
 
     const search = (): void => {
         if (location !== "" && region.length !== 0) {
-            fetch("http://125.228.170.229:5000/house", {
+            fetch(process.env.NEXT_PUBLIC_APARTMENT_API_URL as string, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
