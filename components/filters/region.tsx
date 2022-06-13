@@ -20,13 +20,13 @@ const Region = ({ values, setValues }: FilterProps) => {
     return (
         <div className="flex flex-col justify-center font-medium">
             <label
-                htmlFor="key"
+                htmlFor="region-key"
                 className="text-lg font-semibold text-gray-800"
             >
                 位置
             </label>
             <select
-                name="key"
+                name="region-key"
                 value={city}
                 onChange={handleChangeCity}
                 className="block px-3 py-2 mt-1 font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
@@ -38,7 +38,6 @@ const Region = ({ values, setValues }: FilterProps) => {
             <div className="flex flex-wrap gap-3 mt-4">
                 <RegionItems regions={regions} values={values} setValues={setValues} />
             </div>
-            {values.toString()}
         </div>
     );
 };

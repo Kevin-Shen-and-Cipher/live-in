@@ -33,7 +33,6 @@ const Shape = ({ values, setValues }: FilterProps) => {
             <div className="flex flex-wrap gap-3 mt-1">
                 {listItems}
             </div>
-            {values.toString()}
         </div>
     );
 };

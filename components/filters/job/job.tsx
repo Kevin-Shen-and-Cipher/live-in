@@ -5,7 +5,7 @@ import Location from "../location";
 import Region from "../region";
 import JobTenure from "./job-tenure";
 import Salary from "./salary";
-import Search from "./search";
+import JobSearch from "./job-search";
 import WorkingHour from "./working-hour";
 
 const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>> }) => {
@@ -54,7 +54,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
                 <PrimaryButton label="搜尋" handleClick={search} />
             </div>
             <hr />
-            <Search label="工作" value={job} setValue={setJob} />
+            <JobSearch value={job} setValue={setJob} />
             <Region values={region} setValues={setRegion} />
             <Salary value={salary} setValue={setSalary} />
             <JobTenure values={tenure} setValues={setTenure} />
