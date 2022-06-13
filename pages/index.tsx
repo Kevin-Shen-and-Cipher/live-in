@@ -7,25 +7,25 @@ import List from '../components/cards/list';
 import Navigation from '../components/frontend/navigation';
 
 const Home: NextPage = () => {
-    const [page, setPage] = useState("department");
-    const [filter, setFilter] = useState(<ApartmentFilter />);
-    const [cards, SetCards] = useState<CardProps[]>([]);
+    const [page, setPage] = useState("apartment");
+    const [cards, setCards] = useState<CardProps[]>([]);
+    const [filter, setFilter] = useState(<ApartmentFilter setCards={setCards} />);
 
     const handlePageChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setPage(e.currentTarget.name);
         if (e.currentTarget.name === "job") {
-            setFilter(<JobFilter />);
-            SetCards(getData2());
-
+            setFilter(<JobFilter key="job-filter" setCards={setCards} />);
+            setPage("job");
         } else {
-            setFilter(<ApartmentFilter />);
-            SetCards(getData());
+            setFilter(<ApartmentFilter key="apartment-filter" setCards={setCards} />);
+            setPage("apartment");
         }
+
+        setCards([]);
     };
 
     return (
         <>
-            <Navigation handlePageChange={handlePageChange} />
+            <Navigation handlePageChange={handlePageChange} page={page} />
             <div className="flex justify-center mx-4 my-16 md:mx-8">
                 <div className="w-full max-w-screen-lg">
                     <div className="grid grid-cols-12 gap-5 place-items-stretch">
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                         </div>
 
                         <div className="col-span-12 md:col-span-8">
-                            <List cards={cards}/>
+                            <List cards={cards} />
                         </div>
                     </div>
                 </div>
@@ -42,39 +42,5 @@ const Home: NextPage = () => {
         </>
     );
 };
-
-const getData = () => {
-    return [
-        {
-            title: "test1",
-            link: "https://www.google.com"
-        },
-        {
-            title: "test2",
-            link: "https://www.google.com"
-        },
-        {
-            title: "test3",
-            link: "https://www.google.com"
-        },
-        {
-            title: "test4",
-            link: "https://www.google.com"
-        },
-    ];
-}
-
-const getData2 = () => {
-    return [
-        {
-            title: "job1",
-            link: "https://www.google.com"
-        },
-        {
-            title: "job2",
-            link: "https://www.google.com"
-        },
-    ];
-}
 
 export default Home;

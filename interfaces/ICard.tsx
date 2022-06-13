@@ -1,4 +1,5 @@
 export interface CardProps {
     title: string,
-    link: string
+    url: string,
+    distance:string
 }

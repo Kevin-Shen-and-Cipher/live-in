@@ -3,9 +3,9 @@ import Card from "./card";
 
 const List = ({ cards }: { cards: CardProps[] }) => {
 
-    const listItems = cards.map((element: CardProps) => {
+    const listItems = cards.map((element: CardProps, index) => {
         return (
-            <Card key={element.title} title={element.title} link={element.link} />
+            <Card key={element.title + "-" + index} distance={element.distance} title={element.title} url={element.url} />
         );
     });
 

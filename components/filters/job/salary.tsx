@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { FilterProps, OptionProps } from "../../../interfaces/IFilter";
-import Checkbox from "../../form/checkbox";
+import React from "react";
+import { OptionProps } from "../../../interfaces/IFilter";
 
 const salaryOptions: OptionProps[] = [
     {
@@ -21,22 +20,47 @@ const salaryOptions: OptionProps[] = [
     },
 ];
 
-const Salary = ({ values, setValues }: FilterProps) => {
-    const listItems = salaryOptions.map((item: OptionProps) => {
-        return (
-            <Checkbox key={item.label} label={item.label} value={item.value} name="salary" values={values} setValues={setValues} />
-        );
-    });
+interface SalaryProps {
+    value: string,
+    setValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Salary = ({ value, setValue }: SalaryProps) => {
+
+    const handleChangeSalary = (event: React.FormEvent<HTMLSelectElement>): void => {
+        setValue(event.currentTarget.value);
+    };
 
     return (
-        <div className="">
+        <div className="flex flex-col justify-center font-medium">
             <label className="text-lg font-semibold text-gray-800">薪資待遇</label>
-            <div className="flex flex-wrap gap-3 mt-1">
-                {listItems}
-            </div>
+            <select
+                name="key"
+                value={value}
+                onChange={handleChangeSalary}
+                className="block px-3 py-2 mt-1 font-semibold text-gray-600 bg-white border-2 border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+            >
+                <SalaryItems />
+            </select>
             {/* <CumstomSalary values={values} setValues={setValues} /> */}
-            {values.toString()}
         </div>
+    );
+};
+
+const SalaryItems = () => {
+    const listItems = salaryOptions.map((item: OptionProps) =>
+        <option
+            key={item.label}
+            value={item.value}
+            className="font-semibold text-gray-600"
+        >
+            {item.label}
+        </option>
+    );
+    return (
+        <>
+            {listItems}
+        </>
     );
 };
 
