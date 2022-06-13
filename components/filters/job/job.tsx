@@ -12,7 +12,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
     const [location, setLocation] = useState<string>("");
     const [job, setJob] = useState<string>("");
     const [region, setRegion] = useState<string[]>([]);
-    const [salary, setSalary] = useState<string[]>([]);
+    const [salary, setSalary] = useState<string>("1");
     const [tenure, setTenure] = useState<string[]>([]);
     const [workingHour, setWorkingHour] = useState<string[]>([]);
 
@@ -41,7 +41,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
 
     const clear = (): void => {
         setRegion([]);
-        setSalary([]);
+        setSalary("1");
         setTenure([]);
         setWorkingHour([]);
     };
@@ -56,7 +56,7 @@ const JobFilter = ({ setCards }: { setCards: React.Dispatch<React.SetStateAction
             <hr />
             <Search label="工作" value={job} setValue={setJob} />
             <Region values={region} setValues={setRegion} />
-            <Salary values={salary} setValues={setSalary} />
+            <Salary value={salary} setValue={setSalary} />
             <JobTenure values={tenure} setValues={setTenure} />
             <WorkingHour values={workingHour} setValues={setWorkingHour} />
         </div>
