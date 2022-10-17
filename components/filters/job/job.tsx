@@ -8,7 +8,11 @@ import Salary from "./salary";
 import JobSearch from "./job-search";
 import WorkingHour from "./working-hour";
 
-const JobFilter = ({ setCards, setIsReady }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>>, setIsReady: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const JobFilter = (props: {
+    setCards: React.Dispatch<React.SetStateAction<CardProps[]>>,
+    setIsReady: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
+    const { setCards, setIsReady } = props;
     const [location, setLocation] = useState<string>("");
     const [job, setJob] = useState<string>("");
     const [region, setRegion] = useState<string[]>([]);

@@ -13,7 +13,11 @@ import RentKind from "./rentKind";
 import Shape from "./shape";
 import { CardProps } from "../../../interfaces/ICard";
 
-const ApartmentFilter = ({ setCards, setIsReady }: { setCards: React.Dispatch<React.SetStateAction<CardProps[]>>, setIsReady: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const ApartmentFilter = (props: {
+    setCards: React.Dispatch<React.SetStateAction<CardProps[]>>,
+    setIsReady: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
+    const { setCards, setIsReady } = props;
     const [location, setLocation] = useState<string>("");
     const [multiArea, setMultiArea] = useState<string[]>([]);
     const [multiFloor, setMultiFloor] = useState<string[]>([]);
