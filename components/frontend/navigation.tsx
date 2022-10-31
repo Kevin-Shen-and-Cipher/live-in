@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import PrimaryButton from "../primary-button";
+import PrimaryButton from "../share/primary-button";
 
 const Navigation = (props: { setPage: Dispatch<SetStateAction<string>>, page: string }) => {
     const { setPage, page } = props;

@@ -1,0 +1,176 @@
+[
+    {
+        "name": "臺北市",
+        "districts": [
+            {
+                "value": 1,
+                "label": "中山區"
+            },
+            {
+                "value": 2,
+                "label": "大安區"
+            },
+            {
+                "value": 3,
+                "label": "信義區"
+            },
+            {
+                "value": 4,
+                "label": "士林區"
+            },
+            {
+                "value": 5,
+                "label": "內湖區"
+            },
+            {
+                "value": 6,
+                "label": "中正區"
+            },
+            {
+                "value": 7,
+                "label": "萬華區"
+            },
+            {
+                "value": 8,
+                "label": "松山區"
+            },
+            {
+                "value": 9,
+                "label": "大同區"
+            },
+            {
+                "value": 10,
+                "label": "文山區"
+            },
+            {
+                "value": 11,
+                "label": "北投區"
+            },
+            {
+                "value": 12,
+                "label": "南港區"
+            }
+        ]
+    },
+    {
+        "name": "新北市",
+        "districts": [
+            {
+                "value": 13,
+                "label": "板橋區"
+            },
+            {
+                "value": 14,
+                "label": "三重區"
+            },
+            {
+                "value": 15,
+                "label": "淡水區"
+            },
+            {
+                "value": 16,
+                "label": "中和區"
+            },
+            {
+                "value": 17,
+                "label": "永和區"
+            },
+            {
+                "value": 18,
+                "label": "新莊區"
+            },
+            {
+                "value": 19,
+                "label": "新店區"
+            },
+            {
+                "value": 20,
+                "label": "汐止區"
+            },
+            {
+                "value": 21,
+                "label": "林口區"
+            },
+            {
+                "value": 22,
+                "label": "蘆洲區"
+            },
+            {
+                "value": 23,
+                "label": "土城區"
+            },
+            {
+                "value": 24,
+                "label": "三峽區"
+            },
+            {
+                "value": 25,
+                "label": "泰山區"
+            },
+            {
+                "value": 26,
+                "label": "鶯歌區"
+            },
+            {
+                "value": 27,
+                "label": "樹林區"
+            },
+            {
+                "value": 28,
+                "label": "五股區"
+            },
+            {
+                "value": 29,
+                "label": "八里區"
+            },
+            {
+                "value": 30,
+                "label": "深坑區"
+            },
+            {
+                "value": 31,
+                "label": "三芝區"
+            },
+            {
+                "value": 32,
+                "label": "瑞芳區"
+            },
+            {
+                "value": 33,
+                "label": "金山區"
+            },
+            {
+                "value": 34,
+                "label": "萬里區"
+            },
+            {
+                "value": 35,
+                "label": "烏來區"
+            },
+            {
+                "value": 36,
+                "label": "貢寮區"
+            },
+            {
+                "value": 37,
+                "label": "坪林區"
+            },
+            {
+                "value": 38,
+                "label": "石碇區"
+            },
+            {
+                "value": 39,
+                "label": "平溪區"
+            },
+            {
+                "value": 40,
+                "label": "雙溪區"
+            },
+            {
+                "value": 41,
+                "label": "石門區"
+            }
+        ]
+    }
+]

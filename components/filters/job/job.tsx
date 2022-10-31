@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CardProps } from "../../../interfaces/ICard";
-import PrimaryButton from "../../primary-button";
-import Location from "../location";
-import Region from "../region";
+import PrimaryButton from "../../share/primary-button";
+import Location from "../share/address";
+import Region from "../share/district";
 import JobTenure from "./job-tenure";
 import Salary from "./salary";
 import JobSearch from "./job-search";

@@ -1,5 +1,5 @@
 import { FilterProps, OptionProps } from "../../../interfaces/IFilter";
-import Checkbox from "../../form/checkbox";
+import Checkbox from "../form/check-box-list";
 
 const workingHourOptions: OptionProps[] = [
     {
