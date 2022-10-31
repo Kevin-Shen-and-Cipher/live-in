@@ -21,7 +21,7 @@ export const CheckBoxList = (props: {
 
     return (
         <div className="mt-4">
-            <label>{title}</label>
+            {title ? <label>{title}</label> : ""}
             <div className="flex flex-wrap gap-3 mt-1">
                 {optionItems}
             </div>
@@ -38,13 +38,11 @@ export const CheckBox = (props: {
     const { option, values, setValues } = props;
     const [checked, setChecked] = useState(false);
 
-    const handleChangeValue = (checked: boolean, value: string) => {
-        const newValue = Number.parseInt(value);
-
+    const handleChangeValue = (checked: boolean) => {
         if (checked) {
-            setValues([...values, newValue]);
+            setValues([...values, option.value]);
         } else {
-            setValues(values.filter(item => item !== newValue));
+            setValues(values.filter(item => item !== option.value));
         }
     }
 
@@ -62,7 +60,7 @@ export const CheckBox = (props: {
                 name={option.label}
                 value={option.value}
                 checked={checked}
-                onChange={e => handleChangeValue(e.target.checked, e.target.value)}
+                onChange={e => handleChangeValue(e.target.checked)}
                 type="checkbox"
                 className="w-5 h-5 ml-1 border-0 rounded accent-primary focus:outline-none"
             />
