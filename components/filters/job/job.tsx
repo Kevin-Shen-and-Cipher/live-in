@@ -27,9 +27,8 @@ const JobFilter = (props: {
     const search = (): void => {
         if (address && district.length) {
             setIsReady(false);
-            fetch(getUrl(), {
-                method: 'GET'
-            }).then((response) => {
+            fetch(getUrl())
+            .then((response) => {
                 return response.json();
             }).then((result) => {
                 setCards(result);
@@ -41,15 +40,15 @@ const JobFilter = (props: {
     };
 
     const getUrl = () => {
-        const data = JSON.stringify({
-            "address": address,
-            "district": district,
-            "job_position": jobPosition,
-            "min_salary": minSalary,
-            "working_hour": workingHour
-        });
+        let searchParams = new URLSearchParams();
 
-        return apiUrl + '?' + new URLSearchParams(data);
+        searchParams.append("address", address);
+        district.forEach(d => searchParams.append("district", d.toString()));
+        jobPosition.forEach(d => searchParams.append("job_position", d.toString()));
+        workingHour.forEach(d => searchParams.append("working_hour", d.toString()));
+        searchParams.append("min_salary", minSalary.toString());
+
+        return apiUrl + '?' + searchParams.toString();
     };
 
     const clear = (): void => {

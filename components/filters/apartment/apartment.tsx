@@ -29,9 +29,8 @@ const ApartmentFilter = (props: {
     const search = (): void => {
         if (address && district.length) {
             setIsReady(false);
-            fetch(getUrl(), {
-                method: 'GET'
-            }).then((response) => {
+            fetch(getUrl())
+            .then((response) => {
                 return response.json();
             }).then((result) => {
                 setCards(result);
@@ -44,19 +43,21 @@ const ApartmentFilter = (props: {
 
     const getUrl = () => {
         const { maxPrice, minPrice } = price;
-        const data = JSON.stringify({
-            address,
-            district,
-            restrict,
-            roomType,
-            device,
-            rentType,
-            apartmentType,
-            maxPrice,
-            minPrice
-        });
+        let searchParams = new URLSearchParams();
+        
+        searchParams.append("address", address);
+        district.forEach(d => searchParams.append("district", d.toString()));
+        restrict.forEach(d => searchParams.append("restrict", d.toString()));
+        roomType.forEach(d => searchParams.append("room_type", d.toString()));
+        device.forEach(d => searchParams.append("device", d.toString()));
+        rentType.forEach(d => searchParams.append("rent_type", d.toString()));
+        apartmentType.forEach(d => searchParams.append("apartment_type", d.toString()));
+        if (maxPrice !== -1 && minPrice !== -1) {
+            searchParams.append("max_price", maxPrice.toString());
+            searchParams.append("min_price", minPrice.toString());
+        }
 
-        return apiUrl + '?' + new URLSearchParams(data);
+        return apiUrl + '?' + searchParams.toString();
     };
 
     const clear = (): void => {

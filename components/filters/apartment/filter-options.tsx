@@ -2,8 +2,8 @@ import { OptionProps, PriceOptionProps, PriceProps } from "../../../interfaces/I
 
 
 export const defaultPrice: PriceProps = {
-    minPrice: 0,
-    maxPrice: Number.MAX_VALUE
+    minPrice: -1,
+    maxPrice: -1,
 };
 
 export const prices: PriceOptionProps[] = [
