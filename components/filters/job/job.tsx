@@ -4,7 +4,7 @@ import { CheckBoxList } from "../form/check-box-list";
 import { jobPositions, salarys, workingHours } from "./filter-options";
 
 import Selector from "../form/selector";
-import FilterContainer from "../../share/filter-container";
+import FilterContainer from "../share/filter-container";
 import PrimaryButton from "../../share/primary-button";
 import Address from "../share/address";
 import District from "../share/district";

@@ -8,7 +8,7 @@ import PrimaryButton from "../../share/primary-button";
 import Address from "../share/address";
 import Price from "./price";
 import District from "../share/district";
-import FilterContainer from "../../share/filter-container";
+import FilterContainer from "../share/filter-container";
 
 const ApartmentFilter = (props: {
     handleSearchResult: (cards: ApartmentCardProps[] | JobCardProps[]) => void,

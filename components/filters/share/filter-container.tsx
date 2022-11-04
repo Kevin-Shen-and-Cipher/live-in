@@ -1,3 +1,5 @@
+import React from "react";
+
 const FilterContainer = (props: { children: JSX.Element }) => {
     const { children } = props;
 
