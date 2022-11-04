@@ -1,9 +1,24 @@
 export interface OptionProps {
     label: string,
-    value: string
+    value: number
 };
 
 export interface FilterProps {
-    values: string[],
-    setValues: React.Dispatch<React.SetStateAction<string[]>>
+    values: number[],
+    setValues: React.Dispatch<React.SetStateAction<number[]>>
+};
+
+export interface PriceProps {
+    maxPrice: number,
+    minPrice: number
+};
+
+export interface PriceOptionProps {
+    label: string,
+    value: PriceProps
+};
+
+export interface PriceFilterProps {
+    value: PriceProps,
+    setValue: React.Dispatch<React.SetStateAction<PriceProps>>
 };

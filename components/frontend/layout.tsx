@@ -7,11 +7,14 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
+    const title = process.env.NEXT_PUBLIC_APP_NAME as string;
+    const description = process.env.NEXT_PUBLIC_APP_DESCRIPTION as string;
+
     return (
         <>
             <Head>
-                <title>{process.env.title}</title>
-                <meta name="description" content={process.env.description} />
+                <title>{title}</title>
+                <meta name="description" content={description} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="bg-gray-100">
