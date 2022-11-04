@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardProps } from "../../../interfaces/ICard";
+import { ApartmentCardProps, JobCardProps } from "../../../interfaces/ICard";
 import { PriceProps } from "../../../interfaces/IFilter";
 import { CheckBoxList } from "../form/check-box-list";
 import { apartmentTypes, defaultPrice, devices, rentTypes, restricts, roomTypes } from "./filter-options";
@@ -8,13 +8,13 @@ import PrimaryButton from "../../share/primary-button";
 import Address from "../share/address";
 import Price from "./price";
 import District from "../share/district";
-import FilterContainer from "../../share/filter-container"
+import FilterContainer from "../../share/filter-container";
 
 const ApartmentFilter = (props: {
-    setCards: React.Dispatch<React.SetStateAction<CardProps[]>>,
-    setIsReady: React.Dispatch<React.SetStateAction<boolean>>
+    handleSearchResult: (cards: ApartmentCardProps[] | JobCardProps[]) => void,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-    const { setCards, setIsReady } = props;
+    const { handleSearchResult, setIsLoading } = props;
 
     const [address, setAddress] = useState<string>("");
     const [restrict, setRestrict] = useState<number[]>([]);
@@ -28,23 +28,24 @@ const ApartmentFilter = (props: {
 
     const search = (): void => {
         if (address && district.length) {
-            setIsReady(false);
+            setIsLoading(false);
             fetch(getUrl())
-            .then((response) => {
-                return response.json();
-            }).then((result) => {
-                setCards(result);
-                setIsReady(true);
-            }).catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    return response.json();
+                }).then((result: ApartmentCardProps[]) => {
+                    handleSearchResult(result);
+                    setIsLoading(true);
+                }).catch((error) => {
+                    console.log(error);
+                    setIsLoading(true);
+                });
         }
     };
 
     const getUrl = () => {
         const { maxPrice, minPrice } = price;
         let searchParams = new URLSearchParams();
-        
+
         searchParams.append("address", address);
         district.forEach(d => searchParams.append("district", d.toString()));
         restrict.forEach(d => searchParams.append("restrict", d.toString()));

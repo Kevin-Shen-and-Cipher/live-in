@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardProps } from "../../../interfaces/ICard";
+import { ApartmentCardProps, JobCardProps } from "../../../interfaces/ICard";
 import { CheckBoxList } from "../form/check-box-list";
 import { jobPositions, salarys, workingHours } from "./filter-options";
 
@@ -11,10 +11,10 @@ import District from "../share/district";
 
 
 const JobFilter = (props: {
-    setCards: React.Dispatch<React.SetStateAction<CardProps[]>>,
-    setIsReady: React.Dispatch<React.SetStateAction<boolean>>
+    handleSearchResult: (cards: ApartmentCardProps[] | JobCardProps[]) => void,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-    const { setCards, setIsReady } = props;
+    const { handleSearchResult, setIsLoading } = props;
 
     const [address, setAddress] = useState<string>("");
     const [district, setDistrict] = useState<number[]>([]);
@@ -26,16 +26,17 @@ const JobFilter = (props: {
 
     const search = (): void => {
         if (address && district.length) {
-            setIsReady(false);
+            setIsLoading(false);
             fetch(getUrl())
-            .then((response) => {
-                return response.json();
-            }).then((result) => {
-                setCards(result);
-                setIsReady(true);
-            }).catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    return response.json();
+                }).then((result: JobCardProps[]) => {
+                    handleSearchResult(result);
+                    setIsLoading(true);
+                }).catch((error) => {
+                    console.log(error);
+                    setIsLoading(true);
+                });
         }
     };
 
