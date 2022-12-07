@@ -2,11 +2,11 @@ export interface CardProps {
     name: string,
     address: string,
     url: string,
-    city: {
-        name: string
-    },
     district: {
-        name: string
+        name: string,
+        city: {
+            name: string
+        },
     }
 };
 

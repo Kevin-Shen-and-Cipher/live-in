@@ -40,7 +40,7 @@ const CardContent = (props: { card: ApartmentCardProps }) => {
                         <p className="flex items-center text-md">
                             <MapPinIcon className="w-6 h-6" />
                             <span className="ml-2">
-                                {card.city.name} {card.district.name}
+                                {card.district.city.name} {card.district.name}
                             </span>
                         </p>
                         <p className="text-sm text-gray-600">
