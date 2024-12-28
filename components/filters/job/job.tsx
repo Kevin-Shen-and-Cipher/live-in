@@ -23,7 +23,6 @@ const JobFilter = (props: {
     const [workingHour, setWorkingHour] = useState<number[]>([]);
 
     const apiUrl: string = process.env.NEXT_PUBLIC_JOB_API_URL as string;
-
     const search = (): void => {
         if (address && district.length) {
             setIsLoading(false);
